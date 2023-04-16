@@ -1,0 +1,22 @@
+.edgeButton {
+    cursor: pointer;
+    pointer-events: all;
+    stroke: #555556;
+    fill: white;
+}
+
+.edgeButton:hover {
+    fill: #f5f5f5;
+}
+
+.edgeButtonText {
+    pointer-events: none;
+    user-select: none;
+    fill: #555556;
+}
+
+.edgePath {
+    fill: none;
+    stroke: #555556;
+    stroke-width: 1;
+}
