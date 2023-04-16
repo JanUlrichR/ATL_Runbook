@@ -2,7 +2,7 @@ export const initialNodes = [
     {
         id: 'start',
         type: 'initial',
-        data: {},
+        data: {test:"Lol"},
         position: {x: 100, y: 0},
         width:50,
         height:50

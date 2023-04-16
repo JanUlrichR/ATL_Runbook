@@ -19,6 +19,8 @@ const useEdgeClick = (id: EdgeProps['id']) => {
         const sourceNode = getNode(edge.source);
         const targetNode = getNode(edge.target);
 
+        console.log(sourceNode)
+
         if (!targetNode || !sourceNode) {
             return;
         }
@@ -59,8 +61,6 @@ const useEdgeClick = (id: EdgeProps['id']) => {
 }
 
 const useEdgeClick2 = (id: EdgeProps['id']) => {
-
-
     const {nodes, edges,getNode, getEdge, setNodes, setEdges} = useStore(state => ({nodes: state.nodes, edges: state.edges, getNode: state.getNode, getEdge: state.getEdge,setNodes: state.setNodes, setEdges: state.setEdges}))
 
     return () => {

@@ -3,6 +3,7 @@ import ReactFlow from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import {RFState, useStore} from "./store";
+import {useLayout} from "./useLayout";
 
 const selector = (state: RFState) => ({
     nodes: state.nodes,
@@ -18,6 +19,7 @@ const selector = (state: RFState) => ({
 const Runbook = () => {
     const {nodes, nodeTypes, onNodesChange, edges, edgeTypes, onEdgesChange} = useStore(selector)
 
+    useLayout(50)
     return (
         <div style={{width:"500px", height:"500px"}}>
             <ReactFlow
