@@ -1,41 +1,22 @@
-import React, {useEffect } from 'react';
-import ReactFlow, { useNodesState, useEdgesState} from 'reactflow';
+import React from 'react';
+import ReactFlow from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import nodeTypes from "./nodes";
-import edgeTypes from "./edges";
+import {RFState, useStore} from "./store";
 
+const selector = (state: RFState) => ({
+    nodes: state.nodes,
+    selectedNode: state.selectedNode,
+    edges: state.edges,
+    nodeTypes: state.nodeTypes,
+    edgeTypes: state.edgeTypes,
+    onNodesChange: state.onNodesChange,
+    onEdgesChange: state.onEdgesChange,
+    onConnect: state.onConnect,
+});
 
 const Runbook = () => {
-    const [nodes, setNodes, onNodesChange] = useNodesState([]);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
-    useEffect(() => {
-        setNodes([
-            {
-                id: 'initial',
-                type: 'initial',
-                data: {label: 'An input node'},
-                position: {x: 0, y: 50},
-            },
-
-            {
-                id: 'goal',
-                type: 'goal',
-                data: {label: 'Output A'},
-                position: {x: 650, y: 25},
-            },
-        ]);
-
-        setEdges([
-            {
-                id: 'initial->goal',
-                source: 'initial',
-                target: 'goal',
-                type: 'runbook'
-            }
-        ]);
-    }, []);
+    const {nodes, nodeTypes, onNodesChange, edges, edgeTypes, onEdgesChange} = useStore(selector)
 
     return (
         <div style={{width:"500px", height:"500px"}}>
