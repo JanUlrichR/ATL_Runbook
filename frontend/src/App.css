@@ -3,12 +3,11 @@
     grid-template-areas:   "header header"
                         "runbook sidebar";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px 500px;
+    grid-template-rows: auto 500px;
 }
 
 .header {
     grid-area: header;
-    background: red;
 }
 
 .runbook {

@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@atlaskit/badge": "^15.0.23",
+    "@atlaskit/breadcrumbs": "^11.8.0",
     "@atlaskit/icon": "^21.11.5",
+    "@atlaskit/inline-edit": "^12.2.11",
+    "@atlaskit/page-header": "^10.3.5",
+    "@atlaskit/progress-bar": "^0.5.16",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",

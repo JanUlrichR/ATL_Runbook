@@ -1,0 +1,27 @@
+.readView {
+    display: flex;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+.editView {
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid;
+    border-radius: 3px;
+    cursor: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+.editView:focus {
+    border: 2px solid;
+}
+
+.titleText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

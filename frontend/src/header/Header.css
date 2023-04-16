@@ -1,0 +1,20 @@
+.header-container {
+    display: grid;
+    grid-template-areas: "progress title buttons";
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: thick double #00588c;
+    background: rgba(148, 148, 148, 0.1);
+    border-radius: 5px 5px 0 0 ;
+}
+
+.progress {
+    grid-area: progress;
+}
+
+.title {
+    grid-area: title;
+}
+
+.buttons {
+    grid-area: buttons;
+}

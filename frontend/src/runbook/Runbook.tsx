@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactFlow from 'reactflow';
+import React, {useState} from 'react';
+import ReactFlow, {NodeMouseHandler, Node} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import {RFState, useStore} from "./store";
@@ -18,10 +18,23 @@ const selector = (state: RFState) => ({
 
 const Runbook = () => {
     const {nodes, nodeTypes, onNodesChange, edges, edgeTypes, onEdgesChange} = useStore(selector)
+    const [currentNode, setCurrentNode] = useState<Node|undefined>(undefined)
+
 
     useLayout(50)
+
+    const onNodeClick: NodeMouseHandler = (evt, node:Node) => {
+        if (currentNode === node) {
+            setCurrentNode(undefined)
+            return
+        }
+        if (['parallel', 'task', 'initial', 'goal'].includes(node.type!)){
+            setCurrentNode(node)
+        }
+    }
+
     return (
-        <div style={{width:"500px", height:"500px"}}>
+        <div style={{width:"100%", height:"100%"}}>
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -29,7 +42,11 @@ const Runbook = () => {
                 onEdgesChange={onEdgesChange}
                 nodeTypes={nodeTypes}
                 edgeTypes={edgeTypes}
+                onNodeClick={onNodeClick}
                 fitView
+                nodesDraggable={false}
+                nodesConnectable={false}
+                zoomOnDoubleClick={false}
             >
             </ReactFlow>
         </div>

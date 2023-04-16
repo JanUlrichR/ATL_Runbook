@@ -41,7 +41,6 @@ export const useLayout = (middleXpos: number) => {
                     const parallelTasks = firstParent.data.parallelTasks + 1
                     const connectingEdge = getEdge(`${firstParent.id}->${currentNode.id}`)
                     const sourceHandle = Number(connectingEdge?.sourceHandle?.substring(1))
-                    debugger
                     x = newNodesMap.get(firstParent.id).to.x + (sourceHandle + 1) * firstParent.width! / parallelTasks - currentNode.width! / 2
                 } else if (firstParent) {
                     x = newNodesMap.get(firstParent.id).to.x + firstParent.width! / 2 - currentNode.width! / 2
