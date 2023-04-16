@@ -1,0 +1,22 @@
+.app {
+    display: grid;
+    grid-template-areas:   "header header"
+                        "runbook sidebar";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 500px;
+}
+
+.header {
+    grid-area: header;
+    background: red;
+}
+
+.runbook {
+    grid-area: runbook;
+    background: yellow;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: green;
+}
