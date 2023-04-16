@@ -25,6 +25,12 @@ export type RFState = {
     nodeTypes?: NodeTypes;
     edgeTypes?: EdgeTypes;
     updateParallelTasks: (nodeId: string, parallelTasks: number) => void;
+    addNode: (node: Node) => void;
+    getNode: (nodeId: string) => Node|undefined;
+    setNodes: (nodes: Node[]) => void;
+    addEdge: (edge: Edge) => void;
+    getEdge: (edgeId: string) => Edge|undefined;
+    setEdges:  (edges: Edge[]) => void;
 };
 
 export const useStore = create<RFState>((set, get) => ({
@@ -57,5 +63,27 @@ export const useStore = create<RFState>((set, get) => ({
                 return node;
             }),
         });
-    }
+    },
+    addNode: (node: Node) => {
+        set({
+            nodes: [...get().nodes, node]
+        })
+    },
+    setNodes: (nodes: Node[]) => {
+        set({
+            nodes: nodes
+        })
+    },
+    getNode: (nodeId: string) => get().nodes.find(node => node.id === nodeId),
+    addEdge: (edge: Edge) => {
+        set({
+            edges: [...get().edges, edge]
+        })
+    },
+    getEdge: (edgeId: string) => get().edges.find(edge => edge.id === edgeId),
+    setEdges: (edges: Edge[]) => {
+        set({
+            edges: edges
+        })
+    },
 }));
