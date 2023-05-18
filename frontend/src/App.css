@@ -17,5 +17,5 @@
 
 .sidebar {
     grid-area: sidebar;
-    background: green;
+    /*background: green;*/
 }

@@ -5,7 +5,7 @@ import "./InProgressIcon.css"
 //https://loading.io/spinner/rolling/-bar-circle-curve-round-rotate
 // free to use licence for any purpose
 
-export const InProgressIcon: React.FC = ({}) => {
+export const InProgressIcon: React.FC = () => {
     const circleRef = useRef<HTMLDivElement>(null)
     const size = 'xlarge'
     const reducedRadius = 8;

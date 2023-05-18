@@ -1,19 +1,13 @@
 import "./Buttons.css"
-import SettingsIcon from '@atlaskit/icon/glyph/settings'
-import Button from '@atlaskit/button';
-import AddCircleIcon from '@atlaskit/icon/glyph/add-circle'
+import SettingsIcon from '@mui/icons-material/Settings';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import {IconButton} from "@mui/material";
 export const Buttons = () => {
 
     return (
-        <div className={'buttons'}>
-            <Button
-                iconBefore={ <SettingsIcon label={"administer"} />}
-                appearance="subtle"
-            />
-            <Button
-                iconBefore={ <AddCircleIcon label={"addRun"} />}
-                appearance="subtle"
-            />
+        <div className={'button-items'}>
+            <IconButton><SettingsIcon/></IconButton>
+            <IconButton><PostAddIcon/></IconButton>
         </div>
     );
 };

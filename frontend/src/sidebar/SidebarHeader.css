@@ -1,0 +1,20 @@
+.sidebar-header-container {
+    display: grid;
+    grid-template-areas: "title buttons";
+    grid-template-columns: 1fr 1fr;
+}
+
+.sidebar-title {
+    grid-area: title;
+}
+
+.sidebar-buttons {
+    grid-area: buttons;
+}
+
+.sidebar-button-items {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+

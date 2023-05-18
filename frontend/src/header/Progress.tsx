@@ -1,22 +1,34 @@
-import ProgressBar from '@atlaskit/progress-bar';
-import Badge from "@atlaskit/badge";
+
 import './Progress.css'
+import React from "react";
+import {Badge, LinearProgress, linearProgressClasses, styled} from "@mui/material";
+import PendingIcon from '@mui/icons-material/Pending';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    height: 10,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+        backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+        borderRadius: 5,
+        backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
+    },
+}));
 
 export const ProgressBarHeader = () => {
     const openItems = 100
     const doneItems = 50
     return (
         <div className={'progress-bar'}>
-            <Badge appearance="added" max={false}>
-                {doneItems}
+            <Badge badgeContent={doneItems} color="success">
+                <CheckCircleIcon color="action" />
             </Badge>
-            <ProgressBar
-                appearance="success"
-                ariaLabel="Done: 10 of 10 issues"
-                value={doneItems/(openItems+doneItems)}
-            />
-            <Badge appearance="removed" max={false}>
-                {openItems}
+            <BorderLinearProgress variant="determinate" value={doneItems/(openItems+doneItems) *100} />
+
+            <Badge badgeContent={openItems} color="success">
+                <PendingIcon color="action" />
             </Badge>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactFlow, {NodeMouseHandler, Node} from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -16,20 +16,16 @@ const selector = (state: RFState) => ({
     onConnect: state.onConnect,
 });
 
-const Runbook = () => {
+const Runbook: React.FC<{selectedTask:Node|undefined;selectTask: (node: Node | undefined) => void, dismissTask:() => void}> = ({selectedTask, selectTask, dismissTask})  => {
     const {nodes, nodeTypes, onNodesChange, edges, edgeTypes, onEdgesChange} = useStore(selector)
-    const [currentNode, setCurrentNode] = useState<Node|undefined>(undefined)
-
 
     useLayout(50)
 
     const onNodeClick: NodeMouseHandler = (evt, node:Node) => {
-        if (currentNode === node) {
-            setCurrentNode(undefined)
-            return
-        }
-        if (['parallel', 'task', 'initial', 'goal'].includes(node.type!)){
-            setCurrentNode(node)
+        if (selectedTask?.id === node.id) {
+            dismissTask()
+        }else if(['task', 'initial', 'goal'].includes(node.type!)){
+            selectTask(node)
         }
     }
 
@@ -43,6 +39,7 @@ const Runbook = () => {
                 nodeTypes={nodeTypes}
                 edgeTypes={edgeTypes}
                 onNodeClick={onNodeClick}
+                onPaneClick={dismissTask}
                 fitView
                 nodesDraggable={false}
                 nodesConnectable={false}
